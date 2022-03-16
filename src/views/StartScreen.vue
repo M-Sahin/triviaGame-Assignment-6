@@ -1,0 +1,90 @@
+<script setup>
+import { ref, onMounted, computed } from "vue";
+import { useStore } from "vuex";
+import { useRouter } from "vue-router";
+
+// declare vuex store and vue-router for use in the component
+const store = useStore();
+const router = useRouter();
+
+// declare variables used by the template
+const username = ref("");
+const amount = ref(5);
+const difficulty = ref("");
+const category = ref("");
+const toggleOptions = ref(false);
+
+// declare a reference to the users state
+const users = computed(() => store.state.users);
+
+// upon pressing the 'Start' button, update the store states and switch to the QuestionScreen route
+const onStartClick = async () => {
+  store.commit("setUsername", username.value);
+  store.commit("setAmount", amount.value);
+  store.commit("setDifficulty", difficulty.value);
+  store.commit("setCategory", category.value);
+  const user = store.getters.findUserByUsername;
+  // if the API didn't have a user with the same username, create a new one
+  if (!user) {
+    await store.dispatch("addNewUser");
+    await store.dispatch("fetchUsers");
+  } else {
+    store.commit("setUserId", user.id);
+  }
+  // fetch appropriate questions depending on user input
+  await store.dispatch("fetchQuestions");
+  router.replace("/questions");
+};
+
+// fetch the category and user data from the APIs when the component is mounted
+onMounted(async () => {
+  await store.dispatch("fetchCategories");
+  await store.dispatch("fetchUsers");
+});
+</script>
+
+<template>
+  <div class="startScreen">
+    <div class="startInputs">
+      <input
+        type="text"
+        class="startInput"
+        placeholder="Player name"
+        v-model="username"
+      />
+      <button @click="onStartClick" class="startButton">Start</button>
+      <button @click="toggleOptions = !toggleOptions" class="optionsButton">
+        Options
+      </button>
+      <div v-show="toggleOptions" class="options">
+        <select class="option" v-model="difficulty">
+          <option disabled value="">Difficulty</option>
+          <option value="easy">Easy</option>
+          <option value="medium">Medium</option>
+          <option value="hard">Hard</option>
+        </select>
+        <input type="number" class="option" v-model="amount" min="1" max="50" />
+        <div>
+          <p class="invalidValue" v-show="amount < 1">Select min 1 question</p>
+          <p class="invalidValue" v-show="amount > 50">
+            Select max 50 questions
+          </p>
+        </div>
+        <select v-model="category" class="option">
+          <option disabled value="">Category</option>
+          <option
+            v-for="item in store.state.categories"
+            :key="item.id"
+            :value="item.id"
+          >
+            {{ item.name }}
+          </option>
+        </select>
+      </div>
+    </div>
+  </div>
+</template>
+
+<style scoped>
+
+</style>
