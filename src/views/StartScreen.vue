@@ -52,10 +52,15 @@ onMounted(async () => {
         placeholder="Player name"
         v-model="username"
       />
-      <button @click="onStartClick" class="startButton">Start</button>
+
+      <br />
+
       <button @click="toggleOptions = !toggleOptions" class="optionsButton">
         Options
       </button>
+
+      <button @click="onStartClick" class="startButton">Start</button>
+
       <div v-show="toggleOptions" class="options">
         <select class="option" v-model="difficulty">
           <option disabled value="">Difficulty</option>
@@ -81,10 +86,47 @@ onMounted(async () => {
           </option>
         </select>
       </div>
+
     </div>
   </div>
 </template>
 
 <style scoped>
+.startScreen {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 5px 6px rgba(0, 0, 0, 0.23);
+    padding: 100px 0;
+    width: 60%;
+    margin-left: 20%;
+    min-height: 500px;
+}
 
+.startInput {
+    width: 400px;
+    height: 75px;
+    border-radius: 5px;
+    font-size: 30px;
+    padding-left: 10px;
+}
+
+.optionsButton, .startButton {
+    width: 150px;
+    height: 50px;
+    font-size: 30px;
+    border-radius: 15px;
+    margin: 20px;
+}
+
+.options {
+    display: flex;
+    justify-content: center;
+
+}
+
+.option {
+    width: 100px;
+    height: 30px;
+    font-size: 20px;
+    margin: 10px;
+    border-radius: 5px;
+}
 </style>
