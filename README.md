@@ -11,7 +11,7 @@ Complimentary links:
 - [Contributors](#contributors)
 
 ## General Information
-The Trivia Game app starts on the main screen, which is called the Start Screen. Here, the player can input his/her name and set te difficulty, amount of questions and select the category. If the user does not input any values, the game will use the default settings. Default settings consist of 5 question from all categories and difficulties. The data is fetched from a free [API](https://opentdb.com/api_config.php).
+The Trivia Game app starts on the main screen, which is called the Start Screen. Here, the player can input his/her name and set the difficulty, amount of questions and select the category. If the user does not input any values, the game will use the default settings. Default settings consist of 5 question from all categories and difficulties. The data is fetched from a free [API](https://opentdb.com/api_config.php).
 
 When the player presses start, the questions screen will appear. All the questions which are fetched from the API are displayed in this screen. This screen only views one question at a time. Every time the user presses the next button, the page will view the next question. A correct answer amounts to 10 points.
 
