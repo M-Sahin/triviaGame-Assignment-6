@@ -1,6 +1,6 @@
 import { BASE_URL, API_KEY } from ".";
 
-// fetch users from the app specific API
+// fetch users from the specified api
 export async function apiFetchUsers() {
   try {
     const response = await fetch(`${BASE_URL}`);
@@ -15,7 +15,7 @@ export async function apiFetchUsers() {
   }
 }
 
-// add new user to the API using a POST request, API automatically creates and returns an id
+// add new user to API using a POST request, API automatically creates and returns an id
 export async function apiAddNewUser(username) {
   try {
     const config = {
@@ -42,7 +42,7 @@ export async function apiAddNewUser(username) {
   }
 }
 
-// updates the users highScore using a PATCH request
+// updates the users highScore
 export async function apiUpdateUserScore(userId, score) {
   try {
     const config = {
@@ -68,7 +68,7 @@ export async function apiUpdateUserScore(userId, score) {
   }
 }
 
-// deletes user from the API, only for testing purposes if test users need to be removed
+// deletes user from the API
 export async function apiDeleteUser(userId) {
   try {
     const config = {

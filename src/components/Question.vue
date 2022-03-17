@@ -11,7 +11,7 @@ const router = useRouter();
 // declare variables used by the template
 const optionsArray = reactive([]);
 
-// declare references to the questions and currentQuestionIndex states
+// declare references to the questions and currentQuestionIndex
 const questions = computed(() => store.state.questions);
 const currentQuestionIndex = computed(() => store.state.currentQuestionIndex);
 
@@ -34,7 +34,7 @@ const onAnswerClick = (event) => {
   }
 };
 
-// creates an object that contains data for the current question and checks for correct answer
+// create object that has data for current question and checks if answer is correct
 const checkAnswer = (answer) => {
   const answerObject = {
     question: questions.value[currentQuestionIndex.value].question,
@@ -42,18 +42,19 @@ const checkAnswer = (answer) => {
     user_answer: answer,
   };
   store.commit("setUserAnswers", answerObject);
-  // if the answer is correct, increment score
+
+  // if the answer is correct, add 10 points
   if (answer === questions.value[currentQuestionIndex.value].correct_answer) {
     store.commit("setScore", store.state.score + 10);
   }
 };
 
-// before the first render of the template, populate the answers array
+// before render of template, populate answer area
 onBeforeMount(() => {
   updateAnswers();
 });
 
-// clears the answers array and populates it with answers for the current question
+// clear answers array and fill with answers for current question
 const updateAnswers = () => {
   while (optionsArray.length > 0) {
     optionsArray.pop();
@@ -65,7 +66,7 @@ const updateAnswers = () => {
   shuffleAnswers();
 };
 
-// shuffle the order of the answers in the answers array
+// shuffle order of questions
 const shuffleAnswers = () => {
   for (let i = optionsArray.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));

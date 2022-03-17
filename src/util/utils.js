@@ -1,4 +1,4 @@
-// a helper method for decoding html encoded API-data before it is being used in a template
+// a helper method for decoding html encoded API-data 
 export const htmlDecode = (string) => {
   const htmlElement = document.createElement("textarea");
   htmlElement.innerHTML = string;

@@ -3,11 +3,11 @@ import { ref, onMounted, computed } from "vue";
 import { useStore } from "vuex";
 import { useRouter } from "vue-router";
 
-// declare vuex store and vue-router for use in the component
+// declare vuex store and vue-router
 const store = useStore();
 const router = useRouter();
 
-// declare variables used by the template
+// declare variables 
 const username = ref("");
 const amount = ref(5);
 const difficulty = ref("");
@@ -31,7 +31,7 @@ const onStartClick = async () => {
   } else {
     store.commit("setUserId", user.id);
   }
-  // fetch appropriate questions depending on user input
+  // fetch appropriate questions depending on user request
   await store.dispatch("fetchQuestions");
   router.replace("/questions");
 };
