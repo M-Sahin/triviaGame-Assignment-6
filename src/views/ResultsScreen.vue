@@ -34,7 +34,18 @@ const onResetClick = () => {
     store.commit ("setScore", 0);
     store.commit ("clearUserAnswers");
     store.commit ("setUserId", "");
-} 
+};
+
+const answerIsCorrect = () => {
+  correctAnswer = document.getElementsByClassName("correct")
+  selectedAnswer = document.getElementsByClassName("selected")
+
+  if (correctAnswer === selectedAnswer) {
+    selectedAnswer.setAttribute("id", "correctAnswer")
+  };
+};
+
+console.log( document.getElementsByClassName("selected") )
 
 </script>
 
@@ -42,19 +53,24 @@ const onResetClick = () => {
 <div class="resultsScreen">
     <div class="resultsContainer">
       <div class="totalScore">
-        <h3>You scored</h3>
-        <h1>{{ store.state.score }}</h1>
-        <h3>points</h3>
+        <p>You scored</p>
+        <p>{{ store.state.score }}</p>
+        <p> points</p>
+      </div>
+      <div class="resultHeader">
+        <p class="questionHeader">Question:</p>
+        <p class="correctHeader">Correct answer:</p>
+        <p class="selectedHeader">Your answer:</p>
       </div>
       <div class="result" v-for="item in userAnswers" :key="item">
         <p class="question">{{ htmlDecode(item.question) }}</p>
         <p class="correct">{{ htmlDecode(item.correct_answer) }}</p>
-        <p>{{ htmlDecode(item.user_answer) }}</p>
+        <p id="correctAnswer" class="selected">{{ htmlDecode(item.user_answer) }}</p>
       </div>
       <div class="buttonContainer">
         <div class="resultsButtons">
-          <button class="resultButton" @click="onReplayClick">Replay</button>
-          <button class="resultButton" @click="onResetClick">Reset</button>
+          <button class="replayButton" @click="onReplayClick">Replay</button>
+          <button class="resetButton" @click="onResetClick">Reset</button>
         </div>
       </div>
     </div>
@@ -63,7 +79,7 @@ const onResetClick = () => {
 </template>
 
 <style scoped>
-.resultScreen {
+.resultsScreen {
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 5px 6px rgba(0, 0, 0, 0.23);
     padding: 100px 0;
     width: 60%;
@@ -71,7 +87,7 @@ const onResetClick = () => {
     min-height: 500px;
 }
 
-.toStartButton {
+.replayButton, .resetButton {
     width: 150px;
     height: 50px;
     font-size: 30px;
@@ -79,13 +95,81 @@ const onResetClick = () => {
     margin: 20px;
 }
 
+.replayButton:hover, .resetButton:hover {
+  background-color: rgba(0, 0, 0, 0.432);
+  cursor: pointer;
+}
+
+.totalScore {
+  display: flex;
+  width: 80%;
+  margin-left: 10%;
+  justify-content: center;
+  font-size: 50px;
+  font-weight: bolder;
+  margin-bottom: 50px;
+}
+
+.totalScore p {
+  margin: 5px;
+}
+
+.resultHeader {
+  display: flex;
+  justify-content: center;
+  width: 80%;
+  margin-left: 10%;
+  margin-bottom: -25px;
+}
+
+.questionHeader {
+  width: 40%;
+  font-weight: bold;
+}
+
+.correctHeader {
+  width: 25%;
+  margin-left: 5%;
+  font-weight: bold;
+}
+
+.selectedHeader {
+  width: 25%;
+  margin-left: 5%;
+  font-weight: bold;
+}
+
+.result {
+  width: 90%;
+  margin: 50px 0 50px 5%;
+  display: flex;
+  justify-content: center;
+}
+
+.question {
+  width: 40%;
+  text-align: left;
+}
+
+.correct {
+  width: 25%;
+  margin-left: 5%;
+  color: red;
+}
+
+.selected {
+  width: 25%;
+  margin-left: 5%;
+}
 
 #correctAnswer {
     color: green;
 }
 
 #correctAnswer::after {
-    content: "+10 Points";
+    content: " +10 Points";
     color: green;
+    font-size: 20px;
+    position: static;
 }
 </style>
