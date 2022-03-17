@@ -44,7 +44,10 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div class="startScreen">
+  <div class="startScreen screen">
+
+    <p class="startHeader">Welcome to the trivia game</p>
+
     <input
       type="text"
       class="startInput"
@@ -83,6 +86,9 @@ onMounted(async () => {
         </option>
       </select>
     </div>
+
+    <p class="startFooter">This app is made by Murat Sahin and Timothy Blom.</p>
+
   </div>
 </template>
 
@@ -93,6 +99,19 @@ onMounted(async () => {
     width: 60%;
     margin-left: 20%;
     min-height: 500px;
+}
+
+.startHeader {
+  font-size: 40px;
+  font-weight: bold;
+  margin-bottom: 75px;
+}
+
+.startFooter {
+  font-size: 15px;
+  text-align: left;
+  margin-left: 100px;
+  margin-top: 200px;
 }
 
 .startInput {

@@ -75,7 +75,7 @@ const shuffleAnswers = () => {
 </script>
 
 <template>
-  <div class="questionScreen">
+  <div class="questionScreen screen">
     <div class="question">
       <h3>
         {{

@@ -1,5 +1,5 @@
 <script setup>
-import { computed } from "vue";
+import { computed, onUpdated } from "vue";
 import { useStore } from "vuex";
 import { useRouter } from "vue-router";
 import { htmlDecode } from "../util/utils.js";
@@ -36,21 +36,10 @@ const onResetClick = () => {
     store.commit ("setUserId", "");
 };
 
-const answerIsCorrect = () => {
-  correctAnswer = document.getElementsByClassName("correct")
-  selectedAnswer = document.getElementsByClassName("selected")
-
-  if (correctAnswer === selectedAnswer) {
-    selectedAnswer.setAttribute("id", "correctAnswer")
-  };
-};
-
-console.log( document.getElementsByClassName("selected") )
-
 </script>
 
 <template>
-<div class="resultsScreen">
+<div class="resultsScreen screen">
     <div class="resultsContainer">
       <div class="totalScore">
         <p>You scored</p>
@@ -65,7 +54,7 @@ console.log( document.getElementsByClassName("selected") )
       <div class="result" v-for="item in userAnswers" :key="item">
         <p class="question">{{ htmlDecode(item.question) }}</p>
         <p class="correct">{{ htmlDecode(item.correct_answer) }}</p>
-        <p id="correctAnswer" class="selected">{{ htmlDecode(item.user_answer) }}</p>
+        <p class="selected">{{ htmlDecode(item.user_answer) }}</p>
       </div>
       <div class="buttonContainer">
         <div class="resultsButtons">
@@ -85,6 +74,7 @@ console.log( document.getElementsByClassName("selected") )
     width: 60%;
     margin-left: 20%;
     min-height: 500px;
+    margin-bottom: 100px;
 }
 
 .replayButton, .resetButton {
@@ -144,6 +134,7 @@ console.log( document.getElementsByClassName("selected") )
   margin: 50px 0 50px 5%;
   display: flex;
   justify-content: center;
+  border-bottom: solid 3px rgba(0, 0, 0, 0.267)
 }
 
 .question {
@@ -154,7 +145,6 @@ console.log( document.getElementsByClassName("selected") )
 .correct {
   width: 25%;
   margin-left: 5%;
-  color: red;
 }
 
 .selected {

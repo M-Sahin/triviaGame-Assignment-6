@@ -17,10 +17,14 @@
     }
     
     html, body {
-        background-color: white;
+        background-color: rgb(69, 109, 161);
         text-align: center;
         font-size: 30px;
         padding-top: 30px;
+    }
+
+    .screen {
+        background-color: rgb(161, 161, 192);
     }
 
 </style>
