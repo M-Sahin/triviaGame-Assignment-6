@@ -7,7 +7,7 @@ import { htmlDecode } from "../util/utils.js";
 </script>
 
 <template>
-  
+
 </template>
 
 <style scoped>

@@ -75,7 +75,7 @@ const shuffleAnswers = () => {
 </script>
 
 <template>
-  <div class="questionContainer">
+  <div class="questionScreen">
     <div class="question">
       <h3>
         {{
@@ -100,7 +100,7 @@ const shuffleAnswers = () => {
 </template>
 
 <style scoped>
-.questionContainer {
+.questionScreen {
   border-radius: 20px;
   padding: 30px;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 5px 6px rgba(0, 0, 0, 0.23);

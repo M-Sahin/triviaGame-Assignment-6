@@ -45,48 +45,43 @@ onMounted(async () => {
 
 <template>
   <div class="startScreen">
-    <div class="startInputs">
-      <input
-        type="text"
-        class="startInput"
-        placeholder="Player name"
-        v-model="username"
-      />
+    <input
+      type="text"
+      class="startInput"
+      placeholder="Player name"
+      v-model="username"
+    />
 
-      <br />
+    <br />
 
-      <button @click="toggleOptions = !toggleOptions" class="optionsButton">
-        Options
-      </button>
+    <button @click="toggleOptions = !toggleOptions" class="optionsButton">
+      Options
+    </button>
 
-      <button @click="onStartClick" class="startButton">Start</button>
+    <button @click="onStartClick" class="startButton">Start</button>
 
-      <div v-show="toggleOptions" class="options">
-        <select class="option" v-model="difficulty">
-          <option disabled value="">Difficulty</option>
-          <option value="easy">Easy</option>
-          <option value="medium">Medium</option>
-          <option value="hard">Hard</option>
-        </select>
-        <input type="number" class="option" v-model="amount" min="1" max="50" />
-        <div>
-          <p class="invalidValue" v-show="amount < 1">Select min 1 question</p>
-          <p class="invalidValue" v-show="amount > 50">
-            Select max 50 questions
-          </p>
-        </div>
-        <select v-model="category" class="option">
-          <option disabled value="">Category</option>
-          <option
-            v-for="item in store.state.categories"
-            :key="item.id"
-            :value="item.id"
-          >
-            {{ item.name }}
-          </option>
-        </select>
+    <div v-show="toggleOptions" class="options">
+      <select class="option" v-model="difficulty">
+        <option disabled value="">Difficulty</option>
+        <option value="easy">Easy</option>
+        <option value="medium">Medium</option>
+        <option value="hard">Hard</option>
+      </select>
+      <input type="number" class="option" v-model="amount" min="1" max="50" />
+      <div>
+        <p class="invalidValue" v-show="amount < 1">Select min 1 question</p>
+        <p class="invalidValue" v-show="amount > 50">Select max 50 questions</p>
       </div>
-
+      <select v-model="category" class="option">
+        <option disabled value="">Category</option>
+        <option
+          v-for="item in store.state.categories"
+          :key="item.id"
+          :value="item.id"
+        >
+        {{ item.name }}
+        </option>
+      </select>
     </div>
   </div>
 </template>
