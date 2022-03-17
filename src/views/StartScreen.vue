@@ -111,6 +111,11 @@ onMounted(async () => {
     margin: 20px;
 }
 
+.optionsButton:hover, .startButton:hover {
+  background-color: rgba(0, 0, 0, 0.432);
+  cursor: pointer;
+}
+
 .options {
     display: flex;
     justify-content: center;

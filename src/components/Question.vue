@@ -119,9 +119,14 @@ const shuffleAnswers = () => {
 
 .answerButton {
   width: 80%;
-  height: 50px;
+  min-height: 50px;
   font-size: 30px;
   border-radius: 15px;
   margin: 20px;
+}
+
+.answerButton:hover {
+  background-color: rgba(0, 0, 0, 0.432);
+  cursor: pointer;
 }
 </style>

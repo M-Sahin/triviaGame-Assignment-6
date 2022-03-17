@@ -18,6 +18,9 @@
     
     html, body {
         background-color: white;
+        text-align: center;
+        font-size: 30px;
+        padding-top: 30px;
     }
 
 </style>
