@@ -1,6 +1,7 @@
 # Trivia Game 
-
-[REST API](https://murattimothytriviagame.herokuapp.com/trivia)
+Complimentary links:
+- [REST API](https://murattimothytriviagame.herokuapp.com/trivia)
+- [Assignment PDF](https://lms.noroff.no/pluginfile.php/184832/mod_assign/introattachment/0/Vue_Trivia%20Game.pdf?forcedownload=1)
 
 ## Table of contents
 
