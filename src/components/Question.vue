@@ -75,7 +75,7 @@ const shuffleAnswers = () => {
 </script>
 
 <template>
-  <div class="questionContainer">
+  <div class="questionScreen">
     <div class="question">
       <h3>
         {{
@@ -100,16 +100,28 @@ const shuffleAnswers = () => {
 </template>
 
 <style scoped>
-.questionContainer {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  background-color: rgb(255, 255, 255, 0.8);
-  border-radius: 8px;
+.questionScreen {
+  border-radius: 20px;
   padding: 30px;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 5px 6px rgba(0, 0, 0, 0.23);
-  width: 40%;
+  width: 60%;
+  margin-left: 20%;
+  min-height: 700px;
 }
 
+.question {
+  margin: 100px 0;
+}
+
+.answerContainer {
+  bottom: 0;
+}
+
+.answerButton {
+  width: 80%;
+  height: 50px;
+  font-size: 30px;
+  border-radius: 15px;
+  margin: 20px;
+}
 </style>
