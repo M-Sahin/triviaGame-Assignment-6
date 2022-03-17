@@ -8,7 +8,7 @@ import {
   apiDeleteUser,
 } from "./api/user";
 
-// vuex store configuration for the app
+// vuex-store configuration
 export default createStore({
   state: {
     username: "",
@@ -70,6 +70,8 @@ export default createStore({
       return user.highScore;
     },
   },
+
+  // storing user input in the API
   actions: {
     async fetchQuestions({ commit, state }) {
       const [error, questions] = await apiFetchQuestions(
@@ -114,7 +116,7 @@ export default createStore({
       }
       return null;
     },
-	// action not used in the app, only for testing purposes
+	
     async deleteUser({ commit }, userId) {
       const [error, user] = await apiDeleteUser(userId);
       if (error !== null) {
