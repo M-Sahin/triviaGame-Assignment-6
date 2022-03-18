@@ -71,7 +71,7 @@ export default createStore({
     },
   },
 
-  // storing user input in the API
+  // storing user input in API
   actions: {
     async fetchQuestions({ commit, state }) {
       const [error, questions] = await apiFetchQuestions(
@@ -111,14 +111,6 @@ export default createStore({
     },
     async updateUserScore({ commit, state }) {
       const [error, user] = await apiUpdateUserScore(state.userId, state.score);
-      if (error !== null) {
-        return error;
-      }
-      return null;
-    },
-	
-    async deleteUser({ commit }, userId) {
-      const [error, user] = await apiDeleteUser(userId);
       if (error !== null) {
         return error;
       }

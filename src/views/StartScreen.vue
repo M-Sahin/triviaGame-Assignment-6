@@ -24,7 +24,7 @@ const onStartClick = async () => {
   store.commit("setDifficulty", difficulty.value);
   store.commit("setCategory", category.value);
   const user = store.getters.findUserByUsername;
-  // if the API didn't have a user with the same username, create a new one
+  // if the API didn't have a user with the same username, create new one
   if (!user) {
     await store.dispatch("addNewUser");
     await store.dispatch("fetchUsers");
