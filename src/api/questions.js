@@ -1,6 +1,6 @@
 import { TRIVIA_API_URL } from ".";
 
-// fetch questions from the API using user specified parameters (amount, category, difficulty)
+// fetch questions from the API using user specified input
 export async function apiFetchQuestions(amount, categoryId, difficulty) {
   try {
     const response = await fetch(

@@ -14,10 +14,10 @@ const difficulty = ref("");
 const category = ref("");
 const toggleOptions = ref(false);
 
-// declare a reference to the users state
+// declare reference to user state
 const users = computed(() => store.state.users);
 
-// upon pressing the 'Start' button, update the store states and switch to the QuestionScreen route
+// when pressing 'Start' button, update the store state and switch to QuestionScreen route
 const onStartClick = async () => {
   store.commit("setUsername", username.value);
   store.commit("setAmount", amount.value);
